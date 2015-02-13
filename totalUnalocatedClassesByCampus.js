@@ -10,7 +10,7 @@ var map = function() {
   for (var i in this.subjects) {
     var subject = this.subjects[i];
     for (var j in subject.classes) {
-      var _class = subject.classes[j]; // class is a resever word. WHY?????
+      var _class = subject.classes[j]; // class is a reserved word. WHY?????
       for (var k in _class.timetable) {
         var time = _class.timetable[k];
 
