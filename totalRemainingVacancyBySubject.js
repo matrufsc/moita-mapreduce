@@ -20,4 +20,7 @@ var reduce = function(key, values) {
 var options = { query: { semester: semester }, out: output };
 
 db.moita.mapReduce(map, reduce, options);
-db[output].find().sort({ value: -1 }).limit(20).forEach(printjson);
+db[output].find().sort({ value: -1 }).limit(20).forEach(result => {
+  var name = db.moita.findOne({ _id: result._id }, { name: true }).name;
+  print(`[${result._id}] ${name}: ${result.value}`);
+});

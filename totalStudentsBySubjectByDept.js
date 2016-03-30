@@ -1,6 +1,6 @@
 // configuration
 var database = "moita"; // database name
-var output = "totalStudentsBySubject"; // output collection name (for shell usage)
+var output = "totalStudentsBySubjectByDept"; // output collection name (for shell usage)
 var semester = "20161"; // desired semester
 
 var deptRegex = /^(INE)/;
@@ -22,4 +22,7 @@ var reduce = function(key, values) {
 var options = { query: { _id: deptRegex, semester: semester }, out: output };
 
 db.moita.mapReduce(map, reduce, options);
-db[output].find().sort({ value: -1 }).limit(20).forEach(printjson);
+db[output].find().sort({ value: -1 }).limit(20).forEach(result => {
+  var name = db.moita.findOne({ _id: result._id }, { name: true }).name;
+  print(`[${result._id}] ${name}: ${result.value}`);
+});
