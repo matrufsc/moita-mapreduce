@@ -1,6 +1,6 @@
 // configuration
 var database = "moita"; // database name
-var output = "totalUnalocatedClassesByCampus"; // output collection name (for shell usage)
+var output = "totalUnallocatedClassesByCampus"; // output collection name (for shell usage)
 var semester = "20161"; // desired semester
 
 // code
